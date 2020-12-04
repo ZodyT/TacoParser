@@ -45,7 +45,7 @@
 
              if(cells[2] == null || cells[2].Length == 0)
             {
-                logger.LogError("No location name found while parsing");
+                logger.LogError("No location name found");
             }
 
             // Your going to need to parse your string as a `double`
@@ -67,7 +67,7 @@
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
 
-            return null;
+            return convertedtacobell;
         }
     }
 }
