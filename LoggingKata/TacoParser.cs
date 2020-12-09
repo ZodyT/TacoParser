@@ -61,6 +61,8 @@
             // Then, you'll need an instance of the TacoBell class
             // With the name and point set correctly
 
+            //var point = new Point() { Latitude = TBlat, Longitude = TBlong };
+            
             var point = new Point() { Latitude = TBlat, Longitude = TBlong };
             var convertedtacobell = new TacoBell() { Location = point };
 
