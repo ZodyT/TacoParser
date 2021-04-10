@@ -6,7 +6,7 @@
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
-        
+
         public ITrackable Parse(string line)
         {
             logger.LogInfo("Begin parsing");
@@ -17,58 +17,42 @@
             // If your array.Length is less than 3, something went wrong
             if (cells.Length < 3)
             {
-                logger.LogWarning("Less than 3");// Log that and return null
+                // Log that and return null
                 // Do not fail if one record parsing fails, return null
                 return null; // TODO Implement
             }
 
             // grab the latitude from your array at index 0
-            double TBlat = 0;
+            var TacoBellLatitiude = cells[0];
 
-            if (double.TryParse(cells[0], out TBlat) == false)
-            {
-                logger.LogError("Can't parse latitude as double");
 
-            }
 
             // grab the longitude from your array at index 1
-            double TBlong = 0;
 
-            if (double.TryParse(cells[1], out TBlong) == false)
-            {
-                logger.LogError("Can't parse longitude as double");
-
-            }
-
+            var TacoBellLongitude = cells[1];
             // grab the name from your array at index 2
-            var name = cells[2];
 
-             if(cells[2] == null || cells[2].Length == 0)
-            {
-                logger.LogError("No location name found");
-            }
-
+            var TacoBellName = cells[2];
             // Your going to need to parse your string as a `double`
+
+            double ValuesConvertedLongitude = double.Parse(TacoBellLongitude);
+            double ValuesConvertedLatitude = double.Parse(TacoBellLatitiude);
             // which is similar to parsing a string as an `int`
-
-            // TBlat = Convert.ToDouble();
-
-
 
             // You'll need to create a TacoBell class
             // that conforms to ITrackable
 
             // Then, you'll need an instance of the TacoBell class
-            // With the name and point set correctly
 
-            //var point = new Point() { Latitude = TBlat, Longitude = TBlong };
-            
-            var point = new Point() { Latitude = TBlat, Longitude = TBlong };
-            var convertedtacobell = new TacoBell() { Location = point };
+            var point = new Point() { Latitude = ValuesConvertedLatitude, Longitude = ValuesConvertedLongitude };
+            var convertedtacobell = new TacoBell() { Name = TacoBellName, Location = point };
+
+
+            // With the name and point set correctly
 
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
-             
+
             return convertedtacobell;
         }
     }
